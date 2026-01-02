@@ -1,20 +1,12 @@
 # RxTrax frontend flowchart
 
-<!-- TODO -->
-
 ```mermaid
 flowchart
-todo@{shape: braces, label: "&nbsp; TODO &nbsp;"}
 index(index.html)
 main(src/main.tsx)
-dashboard(src/components/dashboard/index.tsx)
-selector(src/components/selector/index.tsx)
 display(src/components/display/index.tsx)
-week(src/components/week/index.tsx)
-bye(src/components/bye/index.tsx)
-index-->main-->dashboard-->selector-->display
-display-->week
-display-->bye
+meds(src/components/meds/index.tsx)
+index-->main-->display-->meds
 port@{shape: brace, label: "&nbsp; Nginx exposes port 80"}
 ```
 

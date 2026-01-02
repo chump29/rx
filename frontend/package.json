@@ -1,13 +1,13 @@
 {
   "name": "rx-frontend",
   "version": "1.1.0",
-  "description": "Prescription drug tracker (Frontend)",
+  "description": "Prescription medication tracker (Frontend)",
   "homepage": "https://github.com/chump29/rx",
   "license": "GPL-3.0-only",
   "author": "Chris Post",
   "keywords": [
     "prescription",
-    "drug",
+    "medication",
     "tracker"
   ],
   "private": true,

@@ -5,12 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "rx-backend"
 version = "1.1.0"
-description = "Prescription drug tracker (Backend)"
+description = "Prescription medication tracker (Backend)"
 license = "GPL-3.0-only"
 authors = [
     {name = "Chris Post"}
 ]
-keywords = ["prescription", "drug", "tracker"]
+keywords = ["prescription", "medicatoin", "tracker"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Web Environment :: Mozilla",
