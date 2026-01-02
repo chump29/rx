@@ -1,6 +1,6 @@
 __pycache__
 .venv
-*.db
+*.db*
 dist
 node_modules
 uv.lock
