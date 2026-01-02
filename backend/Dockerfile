@@ -9,7 +9,7 @@ ENV UV_NO_DEV=1
 ENV UV_PYTHON_DOWNLOADS=0
 ENV UV_OFFLINE=1
 
-COPY pyproject.toml uv.lock api.py healthcheck.sh /backend/
+COPY pyproject.toml uv.lock *.py healthcheck.sh /backend/
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
@@ -18,20 +18,22 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
 
-RUN rm pyproject.toml uv.lock
+RUN rm uv.lock
 
 # -=-
 
 FROM python:3.14-alpine
 
-COPY --from=build /backend /backend
+WORKDIR /backend
 
-ENV PATH="/backend/.venv/bin:$PATH"
+COPY --from=build /backend .
+
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PATH="/backend/.venv/bin:$PATH"
 
 HEALTHCHECK --interval=60s CMD source /backend/healthcheck.sh
 
 EXPOSE 5556
 
-CMD ["fastapi", "run", "backend/app.py", "--port", "5556"]
+CMD ["fastapi", "run", "/backend/api.py", "--port", "5556"]

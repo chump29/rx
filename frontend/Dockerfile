@@ -17,10 +17,12 @@ RUN --mount=type=cache,target=/pnpm/store pnpm install --frozen-lockfile && \
 
 FROM nginx:alpine
 
+WORKDIR /usr/share/nginx/html
+
 RUN apk add --no-cache tzdata && \
     rm -rf /usr/share/nginx/html/*
 
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist .
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 

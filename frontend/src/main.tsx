@@ -3,19 +3,37 @@ import { createRoot } from "react-dom/client"
 
 import Display from "./components/display"
 
-document.getElementById("header")!.innerText =
-  `v${import.meta.env.PACKAGE_VERSION}`
+const api_url = import.meta.env.VITE_API_URL || ""
 
-document.getElementById("year")!.innerText +=
-  `-${new Date().getFullYear().toString()}`
-
-const POSTFMLY_US = "postfmly.us"
-const copyright = document.getElementById("copyright") as HTMLAnchorElement
-if (window.location.href.includes(POSTFMLY_US)) {
-  copyright.href = `https://www.${POSTFMLY_US}`
-  copyright.title = `www.${POSTFMLY_US}`
-  copyright.innerText = POSTFMLY_US
+function getVersion(version: string) {
+  return version.length ? `v${version}` : "N/A"
 }
+
+document.getElementById("frontend")!.innerText = getVersion(
+  import.meta.env.PACKAGE_VERSION
+)
+
+const obj = document.getElementById("backend")
+fetch(api_url + "/api/version", {
+  method: "GET",
+  signal: AbortSignal.timeout(3000)
+})
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Status: ${response.status}`)
+    }
+    return response.text()
+  })
+  .then((text) => {
+    if (!text.length) {
+      throw new Error("Invalid response")
+    }
+    obj!.innerText = getVersion(text.replaceAll('"', ""))
+  })
+  .catch((e) => {
+    console.error(e)
+    obj!.innerText = "N/A"
+  })
 
 if (import.meta.env.DEV) {
   createRoot(document.getElementById("root")!).render(<Display />)

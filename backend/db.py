@@ -60,20 +60,20 @@ def get():  # r
     return list(Rx.select().dicts())
 
 
-async def update(med: Med):  # u
+def update(med: Med):  # u
     """Update medication"""
     if DEBUG:
         print(f"Updating row: {med.pk}, {med.medication}, {med.strength}")
-    await Rx.update(medication=med.medication, strength=med.strength).where(
+    Rx.update(medication=med.medication, strength=med.strength).where(
         Rx.id == med.pk
     ).execute()
 
 
-async def delete(pk: int):  # d
+def delete(pk: int):  # d
     """Delete medication"""
     if DEBUG:
         print(f"Deleting row: {pk}")
-    await Rx.delete_by_id(pk)
+    Rx.delete_by_id(pk)
 
 
 if __name__ == "__main__":

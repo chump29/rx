@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "rx-backend"
-version = "1.0.0"
+version = "1.1.0"
 description = "Prescription drug tracker (Backend)"
 license = "GPL-3.0-only"
 authors = [

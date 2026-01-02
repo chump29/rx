@@ -1,14 +1,18 @@
 # RxTrax backend flowchart
 
-<!-- TODO -->
 ```mermaid
 flowchart
-todo@{shape: braces, label: "&nbsp; TODO &nbsp;"}
 api@{shape: rect, label: "/api"}
-user[["`/user/*[name]*`"]]
-rx[["`/rx/*[team]*/*[season]*`"]]
-api-->user
-api-->rx
+add[["`/add`"]]
+delete[["`/delete/*[pk]*`"]]
+get[["`/get`"]]
+update[["`/update`"]]
+version[["`/version`"]]
+api-->add
+api-->delete
+api-->get
+api-->update
+api-->version
 port@{shape: brace, label: "&nbsp; Uvicorn exposes port 5556"}
 ```
 

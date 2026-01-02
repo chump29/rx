@@ -9,9 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js"></script>
   </head>
   <body class="dark:bg-gray-800">
-    <header
-      id="header"
-      class="fixed top-2 right-2 text-gray-600 text-xs"></header>
     <main>
       <div
         class="font-bold text-[#00cc00] text-7xl text-center font-[Chango] pt-10">
@@ -31,16 +28,17 @@
           )
           Def.Autocompleter.Event.observeListSelections("rxName", function () {
             const autocomp = $("#rxName")[0].autocomp
-            const item = autocomp.getSelectedItemData()[0]
+            const item = autocomp.getSelectedItemData()
             const strength = $("#rxStrength")
-            if (item.data) {
+            if (item && item[0].data) {
               strength[0].autocomp.setListAndField(
-                item.data["STRENGTHS_AND_FORMS"],
+                item[0].data["STRENGTHS_AND_FORMS"],
                 ""
               )
               strength.attr("data-state", "valid")
             } else {
               strength[0].autocomp.setListAndField("")
+              $("#txtStrength").hide()
               strength.attr("data-state", "invalid")
             }
           })
@@ -48,17 +46,12 @@
       </script>
     </main>
     <footer
-      class="text-center text-xs text-gray-200/75 bg-slate-700 fixed bottom-0 w-[100%]">
-      Copyright &copy;
-      <span id="year"></span>
-      <a
-        id="copyright"
-        href="http://www.postfmly.com"
-        target="_blank"
-        class="underline text-sky-500 hover:text-sky-400"
-        title="www.postfmly.com">
-        postfmly.com
-      </a>
+      class="text-center text-xs text-gray-200/75 bg-slate-700 fixed bottom-0 w-[100%] italic">
+      UI
+      <span id="frontend"></span>
+      <i class="bi bi-dot px-1"></i>
+      API
+      <span id="backend"></span>
     </footer>
   </body>
 </html>
