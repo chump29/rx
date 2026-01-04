@@ -1,35 +1,51 @@
 #!/usr/bin/env -S bash -e
 
-EOL="\e[0m"
-GREEN="\e[1;32m"
-RED="\e[1;4;31m"
-YELLOW="\e[1;33m"
+_red="\e[4;91m"
+_green="\e[4;92m"
+_yellow="\e[4;93m"
+_nc="\e[0m"
+_title=✨
+_start=🟢
+_task="🛠️ "
+_lint=🔍
+_test=🧪
+_stop=🔴
+_image=📦
+_done="✔️ "
 
 clear
 
-echo -e "${RED}=> BACKEND <=${EOL}\n"
+echo -e "${_title} ${_red}BACKEND${_nc} ${_title}\n\n"
 
-echo -e "${GREEN}=> Activating virtual environment...${EOL}\n"
+echo -e "${_start} ${_green}Activating virtual environment${_nc}\n"
 source .venv/bin/activate
 
-echo -e "${GREEN}=> Installing dependencies...${EOL}\n"
+echo -e "${_task} ${_green}Installing dependencies${_nc}\n"
 uv sync --extra dev --quiet
 
-echo -e "${GREEN}=> Linting API...${EOL}"
+echo -e "${_lint} ${_green}Linting${_nc}:"
 ./lint.sh
 
-echo -e "${GREEN}=> Running tests...${EOL}\n"
+echo -e "\n${_test} ${_green}Testing${_nc}:\n"
 #./test.sh # TODO
 
-echo -e "\n${GREEN}=> Deactivating virtual environment...${EOL}\n"
+echo -e "\n${_stop} ${_green}Deactivating virtual environment${_nc}\n"
 deactivate
 
-echo -e "${GREEN}=> Creating image...${EOL}\n"
+echo -e "${_image} ${_green}Creating image${_nc}:\n"
 docker build --tag=rx-backend .
 
-echo -e "\n${YELLOW}=> Done!${EOL}\n"
+echo -e "\n${_done} ${_yellow}Done${_nc}!\n"
 
-unset EOL
-unset GREEN
-unset RED
-unset YELLOW
+unset _red
+unset _green
+unset _yellow
+unset _nc
+unset _title
+unset _start
+unset _task
+unset _lint
+unset _test
+unset _stop
+unset _image
+unset _done
