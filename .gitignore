@@ -3,4 +3,3 @@ __pycache__
 *.db*
 dist
 node_modules
-uv.lock
