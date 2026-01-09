@@ -7,7 +7,6 @@ WORKDIR /backend
 ENV UV_LINK_MODE=copy
 ENV UV_NO_DEV=1
 ENV UV_PYTHON_DOWNLOADS=0
-ENV UV_OFFLINE=1
 
 COPY pyproject.toml uv.lock *.py healthcheck.sh /backend/
 RUN --mount=type=cache,target=/root/.cache/uv \
