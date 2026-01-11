@@ -1,4 +1,4 @@
-# ![RxTrax logo](/frontend/public/rxtrax.png) RxTrax
+# <img src="./frontend/public/rxtrax.png" title="RxTrax logo" height="64" /> RxTrax
 
 * Choose prescription medications and dosage
 * Data will be stored in a SQLite database
