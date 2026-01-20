@@ -57,7 +57,7 @@ export default function Display() {
     if (!name.length) {
       return
     }
-  fetch(api_url + "/api/get/" + name, {
+    fetch(api_url + "/api/get/" + name, {
       method: "GET",
       signal: AbortSignal.timeout(3000)
     })

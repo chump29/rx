@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Chango&display=swap");
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 input {
