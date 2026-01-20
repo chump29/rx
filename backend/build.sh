@@ -33,7 +33,7 @@ echo -e "\n${_stop} ${_green}Deactivating virtual environment${_nc}\n"
 deactivate
 
 echo -e "${_image} ${_green}Creating image${_nc}:\n"
-docker build --tag=trax-backend .
+docker build --tag=rxtrax-backend .
 
 echo -e "\n${_done} ${_yellow}Done${_nc}!\n"
 
