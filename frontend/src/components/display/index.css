@@ -1,0 +1,21 @@
+.overlay {
+  background-color: #1e2939 !important;
+}
+
+.react-confirm-alert-body {
+  background-color: #1e2939 !important;
+  border: 1px outset #00cc00;
+  color: #fff !important;
+  font-weight: bold;
+  text-align: center !important;
+}
+
+.react-confirm-alert-button-group {
+  text-align: center !important;
+  display: block !important;
+}
+
+.react-confirm-alert-button-group button {
+  background-color: #1e2939 !important;
+  border: 1px inset #00cc00 !important;
+}

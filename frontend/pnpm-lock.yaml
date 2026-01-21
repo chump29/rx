@@ -14,6 +14,9 @@ importers:
       react:
         specifier: ^19.2.3
         version: 19.2.3
+      react-confirm-alert:
+        specifier: ^3.0.6
+        version: 3.0.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-dom:
         specifier: ^19.2.3
         version: 19.2.3(react@19.2.3)
@@ -2167,6 +2170,12 @@ packages:
   qified@0.6.0:
     resolution: {integrity: sha512-tsSGN1x3h569ZSU1u6diwhltLyfUWDp3YbFHedapTmpBl0B3P6U3+Qptg7xu+v+1io1EwhdPyyRHYbEw0KN2FA==}
     engines: {node: '>=20'}
+
+  react-confirm-alert@3.0.6:
+    resolution: {integrity: sha512-rplP6Ed9ZSNd0KFV5BUzk4EPQ77BxsrayllBXGFuA8xPXc7sbBjgU5KUrNpl7aWFmP7mXRlVXfuy1IT5DbffYw==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=10.0.0'
 
   react-dom@19.2.3:
     resolution: {integrity: sha512-yELu4WmLPw5Mr/lmeEpox5rw3RETacE++JgHqQzd2dg+YbJuat3jH4ingc+WPZhxaoFzdv9y33G+F7Nl5O0GBg==}
@@ -4740,6 +4749,11 @@ snapshots:
   qified@0.6.0:
     dependencies:
       hookified: 1.15.0
+
+  react-confirm-alert@3.0.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   react-dom@19.2.3(react@19.2.3):
     dependencies:

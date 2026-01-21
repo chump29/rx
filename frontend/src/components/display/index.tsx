@@ -6,11 +6,15 @@ import {
   TrashIcon,
   XCircleIcon
 } from "@heroicons/react/24/outline"
+import { confirmAlert } from "react-confirm-alert"
 
 import { handleX } from "../../helpers/handle"
 import type Med from "../../interfaces/Med"
 import Login from "../login"
 import Meds from "../meds"
+
+import "./index.css"
+import "react-confirm-alert/src/react-confirm-alert.css"
 
 const api_url = import.meta.env.VITE_API_URL || ""
 
@@ -34,21 +38,35 @@ export default function Display() {
     if (pk === 0) {
       return
     }
-    if (confirm("Are you sure?")) {
-      fetch(api_url + "/api/delete/" + pk, {
-        method: "DELETE",
-        signal: AbortSignal.timeout(3000)
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`Status: ${response.status}`)
+    confirmAlert({
+      title: "Delete medication?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            fetch(api_url + "/api/delete/" + pk, {
+              method: "DELETE",
+              signal: AbortSignal.timeout(3000)
+            })
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`Status: ${response.status}`)
+                }
+                window.location.reload()
+              })
+              .catch((e) => {
+                console.error(e)
+              })
           }
-          window.location.reload()
-        })
-        .catch((e) => {
-          console.error(e)
-        })
-    }
+        },
+        {
+          label: "No"
+        }
+      ],
+      closeOnEscape: true,
+      closeOnClickOutside: true,
+      overlayClassName: "overlay"
+    })
   }
 
   useEffect(() => {
